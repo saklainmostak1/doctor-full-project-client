@@ -3,7 +3,7 @@ import React from 'react';
 const AppiontmentOption = ({ option, setTreatment }) => {
     const { name, slots } = option
     return (
-        <div className="card  shadow-xl">
+        <div className="card m-5 shadow-xl">
             <div className="card-body text-center">
                 <h2 className="text-2xl font-bold text-secondary text-center">{name}</h2>
                 <p>{slots.length > 0 ? slots[0] : 'Try Another Day'}</p>
