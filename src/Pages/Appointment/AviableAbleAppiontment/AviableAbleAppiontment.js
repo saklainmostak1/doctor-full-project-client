@@ -16,7 +16,7 @@ const AviableAbleAppiontment = ({selectedDate}) => {
     } = useQuery({
         queryKey: ['appointmentOptions'],
         queryFn: async() => {
-           const res = await fetch(`http://localhost:5000/v2/appointmentOptions?date=${date}`)
+           const res = await fetch(`https://doctors-portal-server-indol-six.vercel.app/v2/appointmentOptions?date=${date}`)
         const data = await res.json()
         return data
     }
