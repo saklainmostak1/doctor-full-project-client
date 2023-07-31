@@ -12,24 +12,37 @@ const ManageDoctors = () => {
         setDeletingDoctor(null)
     }
 
-    const { data: doctors, isLoading, refetch } = useQuery({
+    // const { data: doctors, isLoading, refetch } = useQuery({
+    //     queryKey: ['doctors'],
+    //     queryFn: async () => {
+    //         try {
+    //             const res = await fetch('https://doctors-portal-server-indol-six.vercel.app/doctors', {
+    //                 headers: {
+    //                     authorization: `bearer ${localStorage.getItem('accessToken')}`
+    //                 }
+    //             })
+    //             const data = await res.json()
+    //             return data;
+
+    //         }
+    //         catch (error) {
+
+    //         }
+    //     }
+    // })
+
+
+    const {data: doctors = [],isLoading, refetch} = useQuery({
         queryKey: ['doctors'],
-        queryFn: async () => {
-            try {
-                const res = await fetch('https://doctors-portal-server-indol-six.vercel.app/doctors', {
-                    headers: {
-                        authorization: `bearer ${localStorage.getItem('accessToken')}`
-                    }
-                })
-                const data = await res.json()
-                return data;
-
-            }
-            catch (error) {
-
-            }
+        queryFn: async() =>{
+            const res = await fetch('http://localhost:5000/doctors')
+            const data = await res.json()
+            return data
         }
+
     })
+
+
     const handleDeleteDoctor = (doctor) => {
         fetch(`https://doctors-portal-server-indol-six.vercel.app/doctors/${doctor._id}`, {
             method: "DELETE",
