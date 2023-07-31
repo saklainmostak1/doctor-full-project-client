@@ -18,6 +18,9 @@ import Doctors from "../../Pages/Doctors/Doctors"
 import AllAppointment from "../../Pages/DashBoard/AllAppointMent/AllAppointment"
 import DoctorDetails from "../../Pages/Doctors/DoctorDetails"
 import UpdateDoctor from "../../Pages/DashBoard/ManageDoctors/UpdateDoctor"
+import About from "../../Pages/About/About"
+import ContactUs from "../../Pages/Home/ContactUs/ContactUs"
+import Contact from "../../Pages/ContactUS/Contact"
 
 
 export const router = createBrowserRouter([
@@ -49,6 +52,14 @@ export const router = createBrowserRouter([
             {
                 path: '/all-doctors/details/:id',
                element: <DoctorDetails></DoctorDetails>
+            },
+            {
+                path: '/about',
+               element:<About></About>
+            },
+            {
+                path: '/contactUs',
+               element:  <Contact></Contact>
             },
            
         ]
