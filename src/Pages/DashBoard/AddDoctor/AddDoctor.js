@@ -17,6 +17,7 @@ const AddDoctor = () => {
             return data
         }
     })
+    
     const handleAddDoctor = data => {
         const image = data.image[0]
         const formData = new FormData()
@@ -35,6 +36,13 @@ const AddDoctor = () => {
                     name: data.name,
                     email: data.email,
                     specialty: data.specialty,
+                    description: data.description,
+                    qualification: data.qualification,
+                    CERTIFICATION1: data.CERTIFICATION1,
+                    CERTIFICATION2: data.CERTIFICATION2,
+                    AWARDS1: data.AWARDS1,
+                    AWARDS2: data.AWARDS2,
+                    fee: data.fee,
                     image: imgData.data.url
                 }
                 fetch('https://doctors-portal-server-indol-six.vercel.app/doctors', {
@@ -60,9 +68,12 @@ const AddDoctor = () => {
         return <Loading></Loading>
     }
     return (
+        <div className='h-[800px] flex justify-center items-cente'>
+
         <div className='w-96 p-7'>
             <h2 className='text-4xl'>Add A Doctor</h2>
             <form onSubmit={handleSubmit(handleAddDoctor)}>
+                
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Name</span>
@@ -80,6 +91,84 @@ const AddDoctor = () => {
                     </label>
                     <input type="email"
                         {...register('email', {
+                            required: 'Email is required',
+                        })}
+                        className="input input-bordered w-full max-w-xs" />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Fee</span>
+                    </label>
+                    <input type="text"
+                        {...register('fee', {
+                            required: 'Email is required',
+                        })}
+                        className="input input-bordered w-full max-w-xs" />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Description</span>
+                    </label>
+                    <input type="text"
+                        {...register('description', {
+                            required: 'Email is required',
+                        })}
+                        className="textarea textarea-bordered  w-full h-24 max-w-xs" />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">Qualification</span>
+                    </label>
+                    <input type="text"
+                        {...register('qualification', {
+                            required: 'Email is required',
+                        })}
+                        className="input input-bordered w-full max-w-xs" />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                </div>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">CERTIFICATION 1</span>
+                    </label>
+                    <input type="text"
+                        {...register('CERTIFICATION1', {
+                            required: 'Email is required',
+                        })}
+                        className="input input-bordered w-full max-w-xs" />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text">CERTIFICATION 2</span>
+                    </label>
+                    <input type="text"
+                        {...register('CERTIFICATION2', {
+                            required: 'Email is required',
+                        })}
+                        className="input input-bordered w-full max-w-xs" />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text"> AWARDS 1</span>
+                    </label>
+                    <input type="text"
+                        {...register('AWARDS1', {
+                            required: 'Email is required',
+                        })}
+                        className="input input-bordered w-full max-w-xs" />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text"> AWARDS 2</span>
+                    </label>
+                    <input type="text"
+                        {...register('AWARDS2', {
                             required: 'Email is required',
                         })}
                         className="input input-bordered w-full max-w-xs" />
@@ -114,6 +203,7 @@ const AddDoctor = () => {
                 </div>
                 <input className='btn btn-accent w-full mt-5' value='Add Doctor' type="submit" />
             </form>
+        </div>
         </div>
     );
 };

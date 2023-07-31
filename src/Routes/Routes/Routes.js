@@ -13,6 +13,12 @@ import DisplayError from "../../Pages/Shared/DisplayError/DisplayError"
 import SignUp from "../../Pages/SignUp/SignUp"
 import AdminRoute from "../AdminRoute/AdminRoute"
 import PrivateRoute from "../PrivateRoute/PrivateRoute"
+import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard"
+import Doctors from "../../Pages/Doctors/Doctors"
+import AllAppointment from "../../Pages/DashBoard/AllAppointMent/AllAppointment"
+import DoctorDetails from "../../Pages/Doctors/DoctorDetails"
+import UpdateDoctor from "../../Pages/DashBoard/ManageDoctors/UpdateDoctor"
+
 
 export const router = createBrowserRouter([
     {
@@ -36,29 +42,82 @@ export const router = createBrowserRouter([
                 path: '/appointment',
                element: <Appointment></Appointment>
             },
+            {
+                path: '/all-doctors',
+               element: <Doctors></Doctors>
+            },
+            {
+                path: '/all-doctors/details/:id',
+               element: <DoctorDetails></DoctorDetails>
+            },
+           
         ]
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
+        element:
+         <PrivateRoute>
+             <DashBoardLayout></DashBoardLayout>
+             {/* <DashBoard></DashBoard> */}
+         </PrivateRoute>,
         errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',
                 element: <MyAppointment></MyAppointment>
             },
+
+
+
+
             {
                 path: '/dashboard/allusers',
-                element: <AdminRoute><AllUSers></AllUSers></AdminRoute>
+                element: 
+                <AdminRoute>
+
+                    <AllUSers></AllUSers>
+                </AdminRoute>
             },
             {
                 path: '/dashboard/adddoctor',
-                element: <AdminRoute><AddDoctor></AddDoctor></AdminRoute>
+                element:
+                
+                <AdminRoute>
+
+                    <AddDoctor></AddDoctor>
+                </AdminRoute>
             },
             {
                 path: '/dashboard/managedoctors',
-                element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
+                element: 
+                <AdminRoute>
+
+                    <ManageDoctors></ManageDoctors>
+                </AdminRoute>
             },
+            {
+                path: '/dashboard/allDoctor/managedoctors/:id',
+                element: 
+                <AdminRoute>
+
+                   <UpdateDoctor></UpdateDoctor>
+                </AdminRoute>,
+               
+            },
+            
+            {
+                path: '/dashboard/all-appointments',
+                element: 
+                <AdminRoute>
+
+                   <AllAppointment></AllAppointment>
+                </AdminRoute>
+            },
+            
+
+
+
+
             {
                 path: '/dashboard/payment/:id',
                 element:<Payment></Payment>,

@@ -3,15 +3,16 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import ConfirmAtionModal from '../../Shared/ConfirmationModal/ConfirmAtionModal';
 import Loading from '../../Shared/Loading/Loading';
+import { Link } from 'react-router-dom';
 
 const ManageDoctors = () => {
     const [deletingDoctor, setDeletingDoctor] = useState(null)
 
-    const closeModal = () =>{
+    const closeModal = () => {
         setDeletingDoctor(null)
     }
-    
-    const { data: doctors, isLoading, refetch} = useQuery({
+
+    const { data: doctors, isLoading, refetch } = useQuery({
         queryKey: ['doctors'],
         queryFn: async () => {
             try {
@@ -29,23 +30,23 @@ const ManageDoctors = () => {
             }
         }
     })
-    const handleDeleteDoctor = (doctor) =>{
+    const handleDeleteDoctor = (doctor) => {
         fetch(`https://doctors-portal-server-indol-six.vercel.app/doctors/${doctor._id}`, {
-         method: "DELETE",
-         headers: {
-             authorization: `bearer ${localStorage.getItem('accessToken')}`
-         }
-         
+            method: "DELETE",
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+
         })
-        .then(Response => Response.json())
-        .then(data => {
-         if(data.deletedCount > 0){
-             refetch()
-            toast.success(`Doctor ${doctor.name} Sucessfully delete`)
-         }
-        })
-     }
-    if(isLoading){
+            .then(Response => Response.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch()
+                    toast.success(`Doctor ${doctor.name} Sucessfully delete`)
+                }
+            })
+    }
+    if (isLoading) {
         return <Loading></Loading>
     }
     return (
@@ -61,13 +62,14 @@ const ManageDoctors = () => {
                             <th>Email</th>
                             <th>Specialty</th>
                             <th>Action</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             doctors?.map((doctor, i) => <tr
-                            key={doctor._id}
-                            className="hover">
+                                key={doctor._id}
+                                className="">
                                 <th>{i + 1}</th>
                                 <div className="avatar">
                                     <div className="w-24 rounded-full">
@@ -78,10 +80,16 @@ const ManageDoctors = () => {
                                 <td>{doctor.email}</td>
                                 <td>{doctor.specialty}</td>
                                 <td>
-                                <label
-                                onClick={() => setDeletingDoctor(doctor)} 
-                                htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
-                                   
+                                    <label
+                                        onClick={() => setDeletingDoctor(doctor)}
+                                        htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
+
+                                </td>
+                                <td>
+
+                                    <Link to={`/dashboard/allDoctor/managedoctors/${doctor._id}`}>
+                                        <button className='btn btn-xs'>Edit</button>
+                                    </Link>
                                 </td>
                             </tr>)
                         }
@@ -89,14 +97,14 @@ const ManageDoctors = () => {
                 </table>
             </div>
             {
-                deletingDoctor && 
+                deletingDoctor &&
                 <ConfirmAtionModal
-                title={`Are you sure you want to delete?`}
-                message={`if you delete ${deletingDoctor.name}. it cannot be undone`}
-                closeModal={closeModal}
-                sucessButtonName="Delete"
-                sucessAction = {handleDeleteDoctor}
-                modalData={deletingDoctor}
+                    title={`Are you sure you want to delete?`}
+                    message={`if you delete ${deletingDoctor.name}. it cannot be undone`}
+                    closeModal={closeModal}
+                    sucessButtonName="Delete"
+                    sucessAction={handleDeleteDoctor}
+                    modalData={deletingDoctor}
                 ></ConfirmAtionModal>
             }
         </div>
