@@ -28,7 +28,7 @@ const MyAppointment = () => {
     } = useQuery({
         queryKey: ['bookings'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+            const res = await fetch(`https://doctors-portal-server-indol-six.vercel.app/bookings?email=${user?.email}`)
             const data = await res.json()
             return data
         }
@@ -39,7 +39,7 @@ const MyAppointment = () => {
         const proceed = window.confirm('Are You Sure delete')
             
            if(proceed){
-            fetch(`http://localhost:5000/all-appointments/${id}`, {
+            fetch(`https://doctors-portal-server-indol-six.vercel.app/all-appointments/${id}`, {
                 method: "DELETE",
                
             })

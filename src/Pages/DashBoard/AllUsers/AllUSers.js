@@ -34,7 +34,7 @@ const AllUSers = () => {
         const proceed = window.confirm('Are You Sure delete')
 
         if (proceed) {
-            fetch(`http://localhost:5000/all-users/${id}`, {
+            fetch(`https://doctors-portal-server-indol-six.vercel.app/all-users/${id}`, {
                 method: "DELETE",
 
             })

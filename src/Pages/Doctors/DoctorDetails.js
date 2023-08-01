@@ -9,7 +9,7 @@ const DoctorDetails = () => {
     } = useQuery({
         queryKey: ['doctor'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/doctors/${id}`)
+            const res = await fetch(`https://doctors-portal-server-indol-six.vercel.app/doctors/${id}`)
             const data = await res.json()
             return data
         }

@@ -1,10 +1,14 @@
 import React from 'react';
 import img from '../../assets/doctor/1000x563_cmsv2_3ca855ee-4e62-5f54-91db-593910fb3a90-7283906.webp'
+import img1 from '../../assets/doctor/shaoli03-903_1125.jpg'
+import img2 from '../../assets/doctor/img_5356-final-903_1125.jpg'
+import img3 from '../../assets/doctor/racheli-903_1125.jpg'
+import img4 from '../../assets/doctor/yael-903_1125.jpg'
 import { FaFacebook, FaGoogle, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const About = () => {
     return (
-        <div className='mb-16'>
+        <div className='mb-16 mt-10'>
             <div className='mt-[-12px]'>
                 <div className="hero " style={{ backgroundImage: `url("https://static.vecteezy.com/system/resources/previews/001/890/904/original/female-and-male-nurse-and-doctors-with-uniforms-and-masks-design-free-vector.jpg")` }}>
                     <div className="hero-overlay bg-opacity-60"></div>
@@ -51,7 +55,49 @@ const About = () => {
                         Ewave MD Medical is a proud member of the leading Israeli Ewave Group that employs more than 1,000 employees worldwide.</p>
                 </div>
                 <div>
-                    <h1 className='text-4xl font-semibold mb-5 mt-10'>Our management team:</h1>
+                    <h1 className='text-4xl font-semibold mb-5 mt-10 '>Our management team:</h1>
+                    <div className='grid lg:grid-cols-3  md:grid-cols-2 grid-cols-1 gap-5 '>
+                        <div className="card card-compact bg-base-100 shadow-xl">
+                            <figure><img src={img1} alt="Shoes" /></figure>
+                            <div className="card-body">
+                                <h2 className="card-title">Yosi Jan</h2>
+                                <p>CO-Founder & CEO</p>
+                                <div className="card-actions justify-end">
+                                    <button className="btn btn-primary">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="card card-compact  bg-base-100 shadow-xl">
+                            <figure><img src={img2} alt="Shoes" /></figure>
+                            <div className="card-body">
+                                <h2 className="card-title">Shauli Nakar</h2>
+                                <p>CO-Founder & Managing Partner</p>
+                                <div className="card-actions justify-end">
+                                    <button className="btn btn-primary">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="card card-compact  bg-base-100 shadow-xl">
+                            <figure><img src={img3} alt="Shoes" /></figure>
+                            <div className="card-body">
+                                <h2 className="card-title">Rachel Messerman</h2>
+                                <p>Senior Medical System Projects Manager</p>
+                                <div className="card-actions justify-end">
+                                    <button className="btn btn-primary">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="card card-compact  bg-base-100 shadow-xl">
+                            <figure><img src={img4} alt="Shoes" /></figure>
+                            <div className="card-body">
+                                <h2 className="card-title">Yael Meroz</h2>
+                                <p>Senior Digital & Hospital Projects Manager</p>
+                                <div className="card-actions justify-end">
+                                    <button className="btn btn-primary">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

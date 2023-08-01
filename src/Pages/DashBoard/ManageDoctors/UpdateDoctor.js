@@ -26,7 +26,7 @@ const UpdateDoctor = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/doctors/${id}`)
+        fetch(`https://doctors-portal-server-indol-six.vercel.app/doctors/${id}`)
             .then(Response => Response.json())
             .then(data => setUpdateDoctore(data))
     }, [id])
@@ -37,7 +37,7 @@ const UpdateDoctor = () => {
 
     const handleEditHome = event => {
         event.preventDefault()
-        fetch(`http://localhost:5000/allDoctor-update/${updateDoctore._id}`, {
+        fetch(`https://doctors-portal-server-indol-six.vercel.app/allDoctor-update/${updateDoctore._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -14,7 +14,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
     const [doctorName, setDoctorName] = useState([])
     useEffect(() => {
 
-        fetch("http://localhost:5000/doctors")
+        fetch("https://doctors-portal-server-indol-six.vercel.app/doctors")
             .then(Response => Response.json())
             .then(data => setDoctorName(data))
     }, [])
@@ -43,7 +43,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
             doctorName,
 
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://doctors-portal-server-indol-six.vercel.app/bookings', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
